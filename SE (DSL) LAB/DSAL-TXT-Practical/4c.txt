@@ -1,0 +1,28 @@
+def binary_search(list1,key):
+    start=0
+    end=len(list1)-1
+    while(start<=end):
+        mid=int((start+end)/2)
+        if(list1[mid]==key):
+            print("Roll no.",key,"is present at index",mid)
+            break
+        elif(key>list1[mid]):
+            start=mid+1
+        elif(key<list1[mid]):
+            end=mid-1
+        else:
+            print("Roll no.",key,"not found in list")
+
+print("\nYou are Going to sort Data List\nPlease Provide Input\n")
+list1 = []  # MAKING LIST
+n1 = int(input("Enter Number of Elements in Data list: "))
+for i in range(n1):
+    n2 = int(input("Enter Data Element one by one: "))
+    list1.append(n2)
+
+print()
+print("INPUT UNSORTED LIST IS: ", list1)
+print("----------------------------------------------------")
+key = int(input("Enter the Roll number of Student to be Searched: "))
+
+binary_search(list1,key)

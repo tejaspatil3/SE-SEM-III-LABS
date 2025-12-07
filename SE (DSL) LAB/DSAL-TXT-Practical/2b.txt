@@ -1,0 +1,44 @@
+print("Enter the String")
+s=input("\n")
+print("\n")
+
+def f1():
+   print("Enter A string to cherck palindrome = ")
+   s1=input()
+   s3=s1[::-1]
+   if (s1==s3):
+       print("Entered String is Palindrome\n")
+   else:
+       print("Entered String is NOT Palindrome\n")
+
+def f2():
+   print("Enter substring to get the First occurance index")
+   s4=input()
+   print("index is ",s.find(s4))
+
+def f3():
+   word=s.split()
+   Dict={i:word.count(i) for i in set(word)}
+   print("\nCount the occurance of each word",Dict)
+
+
+n=1
+while(n<=8):
+   n=n+1
+   print("\n\nChoice \n")
+   print("1:Word with longest Length. \n"
+         "2:Determine the freq of occ of particuler character in the string.\n")
+   print("3:Count the occur of each word in the given string.\n")
+   k=int(input("Select a choice "))
+   if (k==1):
+       f1()
+   elif(k==2):
+       f2()
+   elif(k==3):
+       f3()
+   else:
+       print("Enter Valid choice\n")
+
+
+
+

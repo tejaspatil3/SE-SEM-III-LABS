@@ -1,0 +1,142 @@
+A=set() #Football
+B=set() #Badminton
+C=set() #Cricket
+
+
+
+def Football():
+    n1=int(input("Enter number of Students playing football \n"))
+    for i in range(n1):
+        print("Give Unique Names Of Students\n")
+        n=input("Enter the names of Students one by one ")
+        A.add(n)
+
+#
+def Badminton():
+    n2=int(input("Enter number of Students playing Badminton \n"))
+    for i in range(n2):
+        n=input("Enter the names of students one by one ")
+        B.add(n)
+
+
+
+#
+def Cricket():
+    n3=int(input("Enter number of Students Playing Cricket \n"))
+    for i in range(n3):
+        n=input("Enter the names of Students one by one ")
+        C.add(n)
+
+
+#CALCULATION
+#1
+def f1():
+    #List of Students playing both Cricket and Badminton 
+    l1=[]
+    for i in A:
+        if i in B:
+            l1.append(i)
+    print("\nList of Students playing both Cricket and Badminton is = ",end="")
+    print(l1,"\n")
+    print("Number of Students playing both Cricket and Badminton is = ",end="")
+    print(len(l1))
+    
+    
+#2
+def f2():
+    #List of Students play either Cricket or Badminton but not Both 
+    l2=[]
+    l0=[]
+    l01=[]
+    for i in C:
+        if i in B:
+            pass
+        else:
+            l0.append(i)
+    for i in B:
+        if i in C:
+            pass
+        else:
+            l01.append(i)
+    l2=l0+l01
+    print("\nList of Students who play either cricket or Badminton but not both is = ",end="")
+    print(l2,"\n")
+    print("Number of Students who play either cricket or Badminton but not both is = ",end="")
+    print(len(l2))
+#3
+def f3():
+    #Number of Students who play neither Cricket nor badminton
+    l3=[]
+    l1=[]
+    l01=[]
+    l02=[]
+    
+    for i in A:
+        if i in B:
+            if i in C:
+                pass
+            else:
+                l1.append(i)
+    for i in A:
+        if i in B:
+            pass
+        else:
+            l01.append(i)
+    for i in A:
+        if i in C:
+            pass
+        else:
+            l02.append(i)
+    l3=l1+l01+l02
+    print("Number of Students who play neither Cricket nor badminton = ",end="")
+    print(len(l3))
+    print("\nlist is ",end="")
+    print(l3)
+#4
+def f4():
+    #Number of Students who play neither Cricket and Football but  not badminton
+    l4=[]
+    for i in A:
+        if i in C:
+            if i in B:
+                pass
+        else:
+            l4.append(i)
+    print("Number of Students who play neither Cricket and Football but  not badminton",end="")
+    print(len(l4))
+    print("list is",end="")
+    print(l4) 
+n=1    
+while(n<=5):
+    Football()
+    Badminton()
+    Cricket()
+    k=int(input("\n\n\tCHOCIES:\n 1:List of Students playing both Cricket and Badminton"
+                "\n 2:List of Students who play either cricket or Badminton but not both"
+                "\n3:Number of Students who play neither Cricket nor badminton"
+                "\n4:Number of Students who play neither Cricket and Football but  not badminton"
+                "\n5:ADD more students to data"
+                "\nSelect a choice ="))
+    n=n+1
+    
+    if (k==1):
+        f1()
+    elif(k==2):
+        f2()
+    elif(k==3):
+        f3()
+    elif(k==4):
+        f4()
+    elif(k==5):
+        print("1:to Cricket\n2:to Badminnton\n3:to Cricket\n")
+        k=int(input("enter Choice"))
+        if(k==1):
+            Football()
+        elif(k==2):
+            Badminton()
+        elif(k==3):
+            Cricket()
+        else:
+            print("Enter valid Choice")
+    else:
+        print("Enter Valid Choice")

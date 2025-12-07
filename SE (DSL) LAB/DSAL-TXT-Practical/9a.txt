@@ -1,0 +1,65 @@
+
+#include<iostream>
+#include<string.h>
+
+using namespace std;
+
+class STACK
+{
+	private:
+		char a[15];
+		int top;
+	
+	public:
+		STACK()
+		{
+			top=-1;	
+		}	
+		void push(char);
+		void reverse();	
+		
+};
+
+void STACK::push(char c)
+{
+	top++;
+	a[top] = c;
+	a[top+1]='\0';
+    
+	int i;
+	cout<<endl<<c;
+    
+}
+
+void STACK::reverse()
+{
+	char str[15];
+	cout<<"\n\nReversed string is  ";
+		
+	for(int i=top,j=0; i>=0; i--,j++)
+	{
+		str[j]=a[i];
+		cout<<a[i];
+	}
+	cout<<endl;
+}
+
+
+int main()
+{
+	STACK stack;
+	char a[15];
+	int i=0;
+	
+	cout<<"\nEnter string ";
+	cin.getline(a , 15);
+	while(a[i] != '\0')
+	{
+		stack.push(a[i]);
+		i++;
+	}
+    cout<<"All the Characters in the string are pushed\nStack of String\n";
+    cout<<a;
+	stack.reverse();
+	
+}

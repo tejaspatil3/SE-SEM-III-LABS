@@ -1,0 +1,78 @@
+def fibonacci_search(arr, target_roll):
+    fib_m_minus_2 = 0
+    fib_m_minus_1 = 1
+    fib = fib_m_minus_1 + fib_m_minus_2
+
+    while fib < len(arr):
+        fib_m_minus_2, fib_m_minus_1 = fib_m_minus_1, fib
+        fib = fib_m_minus_1 + fib_m_minus_2
+
+    offset = -1
+
+    while fib > 1:
+        i = min(offset + fib_m_minus_2, len(arr) - 1)
+
+        if arr[i] == target_roll:
+            return i  # Student found at index i
+        elif arr[i] < target_roll:
+            fib, fib_m_minus_1, fib_m_minus_2 = (
+                fib_m_minus_2,
+                fib_m_minus_1 - fib_m_minus_2,
+                fib_m_minus_2,
+            )
+            offset = i
+
+        else:
+            fib, fib_m_minus_1, fib_m_minus_2 = (
+                fib - fib_m_minus_1,
+                fib_m_minus_1,
+                fib_m_minus_2 - fib_m_minus_1,
+            )
+
+    if fib_m_minus_1 and arr[offset + 1] == target_roll:
+        return offset + 1  # Student found at offset + 1
+    return -1  # Student not found
+
+
+def binary_search(arr, key):
+    start = 0
+    end = len(arr) - 1
+    while start <= end:
+        mid = (start + end) // 2
+        if arr[mid] == key:
+            return mid  # Student found at index mid
+        elif key > arr[mid]:
+            start = mid + 1
+        else:
+            end = mid - 1
+    return -1  # Student not found
+
+
+# Input: Roll numbers in sorted order
+roll_numbers = []
+n = int(input("Enter Number of Elements in Sorted Data list: "))
+for i in range(n):
+    roll_number = int(input(f"Enter Roll Number {i + 1}: "))
+    roll_numbers.append(roll_number)
+
+print("\nINPUT SORTED LIST IS: ", roll_numbers)
+print("----------------------------------------------------")
+
+# Get the roll number to search
+target_roll = int(input("Enter the Roll number of Student to be Searched: "))
+
+# Perform Fibonacci search
+result_fibonacci = fibonacci_search(roll_numbers, target_roll)
+
+if result_fibonacci != -1:
+    print(f"Student Found at index (Fibonacci Search) {result_fibonacci + 1}")
+else:
+    print("Student Not found (Fibonacci Search)")
+
+# Perform Binary search
+result_binary = binary_search(roll_numbers, target_roll)
+
+if result_binary != -1:
+    print(f"Student Found at index (Binary Search) {result_binary + 1}")
+else:
+    print("Student Not found (Binary Search)")

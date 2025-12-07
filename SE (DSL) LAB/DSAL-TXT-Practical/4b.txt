@@ -1,0 +1,28 @@
+def sentinel_search(arr, target_roll):
+    arr.append(target_roll)  
+    i = 0
+
+    while arr[i] != target_roll:
+        i += 1
+
+    arr.pop() 
+
+    if i < len(arr) - 1:
+        print(f"Student Found at index {i + 1}")
+    else:
+        print("Student Not found")
+
+
+print("\nYou are Going to sort Data List\nPlease Provide Input\n")
+list1 = []  
+n1 = int(input("Enter Number of Elements in Data list: "))
+for i in range(n1):
+    n2 = int(input("Enter Data Element one by one: "))
+    list1.append(n2)
+
+print()
+print("INPUT UNSORTED LIST IS :",list1)
+print("----------------------------------------------------")
+key = int(input("Enter the Roll number of Student to be Searched: "))
+
+sentinel_search(list1, key)

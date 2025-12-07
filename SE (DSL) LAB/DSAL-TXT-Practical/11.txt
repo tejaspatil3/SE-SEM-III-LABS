@@ -1,0 +1,73 @@
+
+#include <iostream>
+using namespace std;
+
+struct queue
+{       
+	int Que[15];
+	int front,rear;
+};
+
+class Queue
+{    
+	struct queue q;
+    public:
+      Queue(){
+		q.front=q.rear=-1;
+		}
+      void enqueue(int);
+      int delqueue();
+      void display();
+};
+
+void Queue::enqueue(int x)
+{
+	q.Que[++q.rear]=x;
+}
+int Queue::delqueue()
+{
+	return q.Que[++q.front];
+}
+
+void Queue::display()
+{   int i;
+    cout<<"\n";
+    for(i=q.front+1;i<=q.rear;i++)
+	     cout<<q.Que[i]<<" ";
+}
+int main()
+{      Queue obj;
+	int ch=1,x;
+	while (ch){
+
+	    cout<<"\n 1.Add Job\n 2.Delete Job\n 3.Display\n 4.Exit\n Enter your choice : ";
+	    cin>>ch;
+	    switch(ch)
+	    {   
+		    case 1: 
+			    cout<<"\n Enter data : \nEnter job Number ";
+			    cin>>x;
+			    obj.enqueue(x);
+			    cout<<endl;
+	            break;
+		    
+	        case 2: 
+			    cout<<"\n Deleted Element = "<<obj.delqueue()<<endl;
+		        cout<<"\nRemaining Jobs :";
+		        obj.display();
+	            break;
+
+	        case 3: 
+			    cout<<"\n Queue contains : \n";
+		        obj.display();
+	            break;
+
+	        case 4: 
+			    cout<<"\n Exiting Program.....";
+                ch=0;
+
+        }
+	}
+return 0;
+}
+
